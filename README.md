@@ -11,10 +11,18 @@ All scripts use dbus and no external libraries (that are not built into python) 
 ###Usage:
 
 ```
-'$ spotify_control.py -n' => go to next song
-'$ spotify_control.py -p' => play/pause the current song
-'$ spotify_control.py -l' => go to previous song
+$ spotify_control.py -n
 ```
+=> go to next song
+```
+$ spotify_control.py -p
+```
+=> play/pause the current song
+```
+$ spotify_control.py -l 
+```
+
+=> go to previous song
 
 ##spotify_notifications.py: Desktop notifications for spotify through python
 
