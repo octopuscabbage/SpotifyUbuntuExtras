@@ -8,6 +8,9 @@ All scripts use dbus and no external libraries (that are not built into python) 
 
 ##spotify_control.py: An easier command line utility for controlling spotify through dbus
 
+This can be used to more easily map Multimedia Keys or other things to song controls. 
+(I personally have Super+Q for previous, Super+W for pause, and Super+E for next)
+
 ###Usage:
 
 ```
