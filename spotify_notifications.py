@@ -17,7 +17,6 @@ def update():
     except KeyError: #Sometimes songs in other languages screw up
         return ""
 
-
 def notify():
     global current_track
     track_now = update()
