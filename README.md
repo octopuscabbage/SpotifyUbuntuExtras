@@ -1,7 +1,5 @@
 #Spotify Extras for Ubuntu Linux
 
-#Spotify Extras for Ubuntu Linus
-
 These scripts were designed to add some extra functionality to Spotify on Ubuntu. 
 
 All scripts use dbus and no external libraries (that are not built into python) Tested on python 3.4, though they should work on 2.x probably.
