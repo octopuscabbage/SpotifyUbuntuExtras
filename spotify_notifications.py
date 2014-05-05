@@ -1,8 +1,13 @@
 import dbus
 import subprocess
 import time
+import inspect, os
 
-update_time = 3 #The time to wait between checks
+update_time  = 3 # The time to wait between checks (in seconds)
+expire_time  = 4000 # The expiration time of the notifications (in milliseconds)
+logo_abspath = 'spotify_80.png' # The path to a logo that will be displayed in the notification
+
+logo_abspath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '/' + logo_abspath
 
 global current_track
 current_track = ""
@@ -22,7 +27,7 @@ def notify():
     track_now = update()
     if track_now != current_track:
         current_track = track_now
-        subprocess.Popen(['notify-send', update()])
+        subprocess.Popen(['notify-send', '--expire-time=' + str(expire_time), '--icon=' + logo_abspath, update()])
 
 while True:
     notify()
