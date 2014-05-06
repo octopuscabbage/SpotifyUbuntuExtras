@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import dbus
 import subprocess
 import time
@@ -17,6 +19,9 @@ current_track = ""
 global current_thumb
 current_thumb = ""
 
+def extract_str(dbus_str):
+    return dbus_str.encode('utf-8')
+
 def update():
     global current_thumb
     bus = dbus.SessionBus()
@@ -29,7 +34,7 @@ def update():
         if current_thumb != thumb_url:
             current_thumb = thumb_url
             subprocess.call(['wget', '-O', thumb_path, '-o', wget_log_path, thumb_url])
-        return "Title: \t\t" + str(info['xesam:title'])+"\nArtist: \t\t" + str(info['xesam:artist'][0]) + "\nAlbum: \t" +  str(info['xesam:album'])
+        return "Title: \t\t" + extract_str(info['xesam:title'])+"\nArtist: \t\t" + extract_str(info['xesam:artist'][0]) + "\nAlbum: \t" + extract_str(info['xesam:album'])
     except KeyError: #Sometimes songs in other languages screw up
         return ""
 
