@@ -4,10 +4,21 @@ import dbus
 import subprocess
 import time
 import inspect, os
+import sys
+
+global python_version
+if sys.version_info[0] == 3:
+    python_version = 3
+elif sys.version_info[0] == 2:
+    python_version = 2
+else:
+    python_version = 1
+        
 
 update_time  = 3 # The time to wait between checks (in seconds)
 expire_time  = 4000 # The expiration time of the notifications (in milliseconds)
-logo_abspath = 'spotify_80.png' # The path to a logo that will be displayed in the notification
+logo_abspath = 'spotify_80.png' # The path to a logo that will be displayed in the notification, this is not in the github repo due to copyright concerns
+
 
 # logo_abspath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '/' + logo_abspath
 thumb_path    = '/tmp/spotify_notification_thumb'
@@ -34,7 +45,11 @@ def update():
         if current_thumb != thumb_url:
             current_thumb = thumb_url
             subprocess.call(['wget', '-O', thumb_path, '-o', wget_log_path, thumb_url])
-        return "Title: \t\t" + extract_str(info['xesam:title'])+"\nArtist: \t\t" + extract_str(info['xesam:artist'][0]) + "\nAlbum: \t" + extract_str(info['xesam:album'])
+        if python_version==2:
+            return "Title: \t\t" + extract_str(info['xesam:title'])+"\nArtist: \t\t" + extract_str(info['xesam:artist'][0]) + "\nAlbum: \t" + extract_str(info['xesam:album'])
+        elif python_version==3:
+            return "Title: \t\t" + str(info['xesam:title'])+"\nArtist: \t\t" + str(info['xesam:artist'][0]) + "\nAlbum: \t" + str(info['xesam:album'])
+
     except KeyError: #Sometimes songs in other languages screw up
         return ""
 
