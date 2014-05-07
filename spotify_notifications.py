@@ -5,6 +5,12 @@ import subprocess
 import time
 import inspect, os
 import sys
+import argparse
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-d",action="store_true",dest="display",default=False) #can be used to display a new notification
+
 
 global python_version
 if sys.version_info[0] == 3:
@@ -14,6 +20,8 @@ elif sys.version_info[0] == 2:
 else:
     python_version = 1
         
+results = parser.parse_args()
+
 
 update_time  = 3 # The time to wait between checks (in seconds)
 expire_time  = 4000 # The expiration time of the notifications (in milliseconds)
@@ -61,6 +69,9 @@ def notify():
         subprocess.call(['notify-send', '--expire-time=' + str(expire_time), '--icon=' + thumb_path, track_now])
 
 if __name__ == '__main__' :
-    while True:
+    if(results.display): #display a notification on demand
         notify()
-        time.sleep(update_time)
+    else:
+        while True:
+            notify()
+            time.sleep(update_time)
