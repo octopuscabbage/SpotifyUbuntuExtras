@@ -36,10 +36,10 @@ $ spotify_control.py -l
 ##spotify_notifications.py: Desktop notifications for spotify through python
 
 ###Usage:
-	```
-	$spotify_control.py -d
-	```
-	=> display a new notification
+```
+$spotify_control.py -d
+```
+=> display a new notification
 
 
-	Just run the script and the notifications will appear. Tweak update time to your liking.
+Just run the script and the notifications will appear. Tweak update time to your liking.
