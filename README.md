@@ -8,6 +8,7 @@ All scripts use dbus and no external libraries (that are not built into python) 
 
 ##Tested on:
 Xubuntu - 14.04, 13.10
+
 ArchLinux - http://www.reddit.com/r/Ubuntu/comments/24eu6n/control_spotify_easily_from_the_command_line_and/ch6lnby
 
 
