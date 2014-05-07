@@ -37,7 +37,7 @@ $ spotify_control.py -l
 
 ###Usage:
 ```
-$spotify_control.py -d
+$ spotify_control.py -d
 ```
 => display a new notification
 
